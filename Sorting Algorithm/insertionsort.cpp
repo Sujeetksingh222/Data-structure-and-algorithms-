@@ -1,25 +1,23 @@
 //Problem statement: we have given an array of n elements , we have to sort the elements of array
-// approach:- in selection sort, in every iteration we find the minimum element position and we push that minimum element at the correct position in the array
+// approach:- in insertion sort , we compare the incoming element with the current element , if current element is greater than the incoming element then find the correct position of incoming element and place it in the array
+
 #include<bits/stdc++.h>
 using namespace std;
   
-    void selectionSort(int arr[], int n)
+    void insertion_sort(int arr[], int n)
     {
-    
-       for(int i=0;i<n;i++)
-       {
-          int  min=i;
-           for(int j=i+1;j<n;j++)
-           {
-               if(arr[j]<arr[min])
-               {
-                   min=j;
-                   
-               }
-           }
-           if(min!=i)swap(arr[i],arr[min]);
-           
-       }
+      for(int i=1;i<n;i++)
+      {
+        int j=i-1;
+        int key=arr[i];
+        while(arr[j]>key and j>=0)
+        {
+            arr[j+1]=arr[j];
+            j--;
+        }
+        j++;
+        arr[j]=key;
+      }
     }
 int main()
 {
@@ -38,7 +36,7 @@ int main()
         cout<<arr[i]<<" ";
     }
     cout<<endl;
-    selectionSort(arr,n);
+    insertion_sort(arr,n);
     cout<<"Elements of the array after sorting:";
     for(int i=0;i<n;i++)
     {

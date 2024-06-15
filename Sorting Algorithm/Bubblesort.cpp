@@ -1,23 +1,26 @@
 //Problem statement: we have given an array of n elements , we have to sort the elements of array
-// approach:- in selection sort, in every iteration we find the minimum element position and we push that minimum element at the correct position in the array
+// approach:- in Bubble sort , we compare adjacent element , if previous element is greater than the next element then swao these elements
+
 #include<bits/stdc++.h>
 using namespace std;
   
-    void selectionSort(int arr[], int n)
+    void Bubble_sort(int arr[], int n)
     {
+        bool flag=false;
     
        for(int i=0;i<n;i++)
        {
           int  min=i;
-           for(int j=i+1;j<n;j++)
+           for(int j=0;j<n-i-1;j++)
            {
-               if(arr[j]<arr[min])
+               if(arr[j]>arr[j+1])
                {
-                   min=j;
+                   swap(arr[j],arr[j+1]);
+                   flag=true;
                    
                }
            }
-           if(min!=i)swap(arr[i],arr[min]);
+           if(!flag)break;
            
        }
     }
@@ -38,7 +41,7 @@ int main()
         cout<<arr[i]<<" ";
     }
     cout<<endl;
-    selectionSort(arr,n);
+    Bubble_sort(arr,n);
     cout<<"Elements of the array after sorting:";
     for(int i=0;i<n;i++)
     {
